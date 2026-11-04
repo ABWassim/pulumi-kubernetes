@@ -5,14 +5,30 @@
 
 ### Fixed
 
+- [#4663](https://github.com/pulumi/pulumi-kubernetes/issues/4663) Fix the HCL examples in the API docs, which used a `pulumi {}` block that Pulumi HCL no longer accepts. HCL examples are now generated from the YAML sources along with the other languages, which also refreshes the other languages' examples with current `pulumi convert` output.
+- [#2675](https://github.com/pulumi/pulumi-kubernetes/issues/2675) Honor the `deleteUnreachable` option (`PULUMI_K8S_DELETE_UNREACHABLE`) when deleting a Helm Release from an unreachable cluster.
+
+### Added
+
+- [#4665](https://github.com/pulumi/pulumi-kubernetes/pull/4665) `helm.v4.Chart` now accepts a `skipSchemaValidation` input, equivalent to `helm template --skip-schema-validation`, to disable validation of values against the chart's `values.schema.json`.
+
+### Changed
+
+## 4.34.3 (November 2, 2026)
+
+### Fixed
+
 - [#4615](https://github.com/pulumi/pulumi-kubernetes/pull/4615) Fix `yaml.ConfigGroup`, `yaml.ConfigFile`, and `kustomize.Directory` being ignored by policy packs in Node.js.
+
+- [#4672](https://github.com/pulumi/pulumi-kubernetes/pull/4672) Address eMudhra security incident by upgrading Go to 1.26.10
+
 ### Added
 
 - [#4616](https://github.com/pulumi/pulumi-kubernetes/pull/4616) `helm.v4.Chart` now accepts a `kubeVersion` input, equivalent to `helm template --kube-version`, to override the Kubernetes version used for `Capabilities.KubeVersion`. If the value is not specified, ``Capabilities.KubeVersion` will revert to the previous behavior of taking the connected cluster's version, or Helm's default of `v1.20.0` if no cluster is reachable.
 
 ### Changed
 
-- Upgrade Kubernetes schema and libraries to v1.37.1.
+- [#4642](https://github.com/pulumi/pulumi-kubernetes/pull/4642) Upgrade Kubernetes schema and libraries to v1.37.1.
 
 ## 4.34.2 (September 18, 2026)
 
